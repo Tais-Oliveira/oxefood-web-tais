@@ -57,6 +57,7 @@ class FormCliente extends React.Component{
 										fluid
 										label='Nome'
 										maxLength="100"
+										placeholder="Maria de Lourdes"
 										value={this.state.nome}
 			                           onChange={e => this.setState({nome: e.target.value})}
 									/>
@@ -66,6 +67,7 @@ class FormCliente extends React.Component{
 										label='CPF'>
 										<InputMask 
 										mask="999.999.999-99"
+										placeholder="150.456.879-09"
 										value={this.state.cpf}
 										onChange={e => this.setState({cpf: e.target.value})} 
 										/> 
@@ -81,6 +83,7 @@ class FormCliente extends React.Component{
                                         width={6}>
 										<InputMask 
 										mask="(99) 9999.9999" 
+										placeholder="(81) 9 8765-2134"
 										value={this.state.foneCelular}
 										onChange={e => this.setState({foneCelular: e.target.value})} 
 										/> 
@@ -92,6 +95,7 @@ class FormCliente extends React.Component{
                                         width={6}>
 										<InputMask 
 										mask="(99) 9999.9999" 
+										placeholder="(81) 9 8765-2134"
 										value={this.state.foneFixo}
 										onChange={e => this.setState({foneFixo: e.target.value})} 
 										/> 
