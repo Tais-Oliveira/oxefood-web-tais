@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import InputMask from 'react-input-mask';
+import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
 
@@ -284,6 +285,7 @@ class FormEntregador extends React.Component{
 
 								<Form.Group widths='equal' style={{marginTop: '4%'}}  className='form--empresa-salvar'>
 
+								  <Link to={'/list-entregador'}>
 									<Button
 										type="button"
 										inverted
@@ -294,8 +296,8 @@ class FormEntregador extends React.Component{
 										onClick={this.listar}
 										>
 										<Icon name='reply' />
-										Voltar
-									</Button>
+									 	Voltar
+									</Button></Link>
 
 									<Container textAlign='right'>
 										

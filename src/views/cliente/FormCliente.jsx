@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import InputMask from 'react-input-mask';
+import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
 class FormCliente extends React.Component{
@@ -117,18 +118,17 @@ class FormCliente extends React.Component{
 
 								<Form.Group widths='equal' style={{marginTop: '4%'}}  className='form--empresa-salvar'>
 
-									<Button
-										type="button"
-										inverted
-										circular
-										icon
-										labelPosition='left'
-										color='orange'
-										onClick={this.listar}
-										>
-										<Icon name='reply' />
-										Voltar
-									</Button>
+								<Link to={'/list-cliente'}>
+								<Button
+                                  inverted
+                                  circular
+                                  icon
+                                  labelPosition='left'
+                                  color='orange'
+                                >
+                               <Icon name='reply' />
+                               Voltar
+                               </Button></Link>
 
 									<Container textAlign='right'>
 										
