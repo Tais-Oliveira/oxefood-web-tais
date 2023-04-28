@@ -38,9 +38,13 @@ formatarData = (dataParam) => {
     return dataFormatada
 };
 
+
 render(){
+   
     return(
+
         <div>
+            
 
             <div style={{marginTop: '3%'}}>
 
@@ -65,8 +69,10 @@ render(){
                         </Button></Link>
                        
                         <br/><br/><br/>
-                      
-                      <Table color='orange' sortable celled>
+                     
+                      <Table style={{marginLeft:'-9%',marginTop:'1%'}} color='orange' celled  > 
+
+                           
 
                           <Table.Header>
                               <Table.Row>
@@ -84,6 +90,7 @@ render(){
                                   <Table.HeaderCell>Endereço Cep</Table.HeaderCell>
                                   <Table.HeaderCell>Endereço Uf</Table.HeaderCell>
                                   <Table.HeaderCell>Endereço Complemento</Table.HeaderCell>
+                                  <Table.HeaderCell>Ativo</Table.HeaderCell>
                                   <Table.HeaderCell textAlign='center' width={2}>Ações</Table.HeaderCell>
                               </Table.Row>
                           </Table.Header>
@@ -117,7 +124,7 @@ render(){
                                               color='blue'
                                               itle='Clique aqui para editar os dados deste entregador' /> &nbsp;
 
-<Button
+                                                <Button
                                                    inverted
                                                    circular
                                                    icon='trash'
@@ -134,7 +141,13 @@ render(){
                    </Container>
                </div>
            </div>
-       )
+
+           
+
+       );
+      
+           
+       }
    }
-}
+
 export default ListEntregador;

@@ -166,7 +166,7 @@ class FormEntregador extends React.Component{
                                     <Form.Input
                                         required
 										fluid
-										label='Qtd Entregas Realizadas:'
+										label='Quantidade de Entregas Realizadas:'
                                         width={6}
 								        maxLength="3"		
 										placeholder="12" 

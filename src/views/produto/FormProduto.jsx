@@ -57,7 +57,7 @@ class FormProduto extends React.Component{
 									<Form.Input
 										required
 										fluid
-										label='Título'	
+										label='Título:'	
 										maxLength="100"
                                         placeholder ="Informe o Título do Produto"
 										value={this.state.titulo}
@@ -84,7 +84,7 @@ class FormProduto extends React.Component{
                                 
 									<Form.TextArea
 										fluid
-										label='Descrição'
+										label='Descrição:'
                                         width={16}
                                         placeholder ="Informe a descrição do Produto"
 										value={this.state.descricao}
@@ -97,7 +97,7 @@ class FormProduto extends React.Component{
 									<Form.Input
                                         required
 										fluid
-										label='Valor Unitário'
+										label='Valor Unitário:'
                                         width={7}
 								         maxLength="3"
 										 value={this.state.valorUnitario}
@@ -109,7 +109,7 @@ class FormProduto extends React.Component{
 									<Form.Input
 									    required
                                         fluid
-                                        label='tempoEntregaMinimo:'
+                                        label='Tempo de Entrega Minimo:'
                                         width={6}         
                                         maskChar={null}
                                         placeholder="Ex: 20/03/1985"
@@ -121,7 +121,7 @@ class FormProduto extends React.Component{
 								   <Form.Input
 									    required
                                         fluid
-                                        label='tempoEntregaMaximo:'
+                                        label='Tempo de Entrega Maximo:'
                                         width={6}                           
                                         maskChar={null}
                                         placeholder="Ex: 20/03/1985"

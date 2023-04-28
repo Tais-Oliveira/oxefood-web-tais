@@ -56,7 +56,7 @@ class FormCliente extends React.Component{
 									<Form.Input
 										required
 										fluid
-										label='Nome'
+										label='Nome:'
 										maxLength="100"
 										placeholder="Maria de Lourdes"
 										value={this.state.nome}
@@ -64,8 +64,9 @@ class FormCliente extends React.Component{
 									/>
 
 									<Form.Input
+                                        required
 										fluid
-										label='CPF'>
+										label='CPF:'>
 										<InputMask 
 										mask="999.999.999-99"
 										placeholder="150.456.879-09"
@@ -79,8 +80,9 @@ class FormCliente extends React.Component{
 								<Form.Group>
 
 									<Form.Input
+									    required
 										fluid
-										label='Fone Celular'
+										label='Fone Celular:'
                                         width={6}>
 										<InputMask 
 										mask="(99) 9999.9999" 
@@ -91,8 +93,9 @@ class FormCliente extends React.Component{
 									</Form.Input>
 
 									<Form.Input
+									    required
 										fluid
-										label='Fone Fixo'
+										label='Fone Fixo:'
                                         width={6}>
 										<InputMask 
 										mask="(99) 9999.9999" 
@@ -103,8 +106,9 @@ class FormCliente extends React.Component{
 									</Form.Input>
 
                                     <Form.Input
+									    required
                                         fluid
-                                        label='Data Nascimento'
+                                        label='Data de Nascimento:'
                                         width={6}
                                     >
                                         <InputMask 
