@@ -99,6 +99,7 @@ class FormProduto extends React.Component{
 										fluid
 										label='Valor Unitário:'
                                         width={7}
+										placeholder="300.00"
 								         maxLength="3"
 										 value={this.state.valorUnitario}
 			                           onChange={e => this.setState({valorUnitario: e.target.value})}
@@ -112,7 +113,7 @@ class FormProduto extends React.Component{
                                         label='Tempo de Entrega Minimo:'
                                         width={6}         
                                         maskChar={null}
-                                        placeholder="Ex: 20/03/1985"
+                                        placeholder="30"
                                     	value={this.state.tempoEntregaMinimo}
 										onChange={e => this.setState({tempoEntregaMinimo: e.target.value})} 
                                         >
@@ -124,7 +125,7 @@ class FormProduto extends React.Component{
                                         label='Tempo de Entrega Maximo:'
                                         width={6}                           
                                         maskChar={null}
-                                        placeholder="Ex: 20/03/1985"
+                                        placeholder="30"
                                     	value={this.state.tempoEntregaMaximo}
 										onChange={e => this.setState({tempoEntregaMaximo: e.target.value})} 
                                 >

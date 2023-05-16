@@ -19,7 +19,7 @@ class ListProduto extends React.Component{
    carregarLista = () => {
 
     axios.get(ENDERECO_API + "api/produto")
-    .then((response) => {
+    .then((response) =>{  
        
         this.setState({
             listaProduto: response.data

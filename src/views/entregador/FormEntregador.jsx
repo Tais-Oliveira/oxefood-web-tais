@@ -5,6 +5,13 @@ import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 import { ENDERECO_API } from "../util/constante";
 
+
+const ufList = [
+	{ key: 'o', text: 'Alagoas', value: 'AL' },
+	{ key: 'f', text: 'Paraíba', value: 'PB' },
+	{ key: 'm', text: 'Pernambuco', value: 'PE' },
+  ]
+
 class FormEntregador extends React.Component{
     
 	state = {
@@ -261,6 +268,17 @@ class FormEntregador extends React.Component{
 										value={this.state.enferecoUf}
 			                           onChange={e => this.setState({enferecoUf: e.target.value})}
 									/>
+										
+								<Form.Select
+									fluid
+									label='UF'
+									options={ufList}
+									placeholder='Selecione'
+									value={this.state.enderecoEstado}
+									onChange={(e,{value}) => {
+										this.setState({enderecoEstado: value})
+									}}
+								/>
                                     
                                        <Form.Input
 										required
@@ -275,6 +293,27 @@ class FormEntregador extends React.Component{
                             
                                    </Form.Group>
                       
+								   <Form.Group inline>
+
+                               <label>Ativo: </label>
+
+                               <Form.Radio
+	                            label='Sim'
+	                            checked={this.state.ativo}
+	                            onChange={e => this.setState({
+		                        ativo: true
+	                                 })}
+                                  />
+
+                              <Form.Radio
+	                            label='Não'
+	                            checked={!this.state.ativo}
+	                            onChange={e => this.setState({
+		                        ativo: false
+	                                         })}
+                                               />
+ 
+                                     </Form.Group> 
 								
 							
 
