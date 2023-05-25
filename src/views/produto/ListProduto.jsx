@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Divider, Icon, Table } from 'semantic-ui-react';
-import { ENDERECO_API } from '../util/constante';
+import { ENDERECO_API } from '../../views/util/constante';
 class ListProduto extends React.Component{
 
    state = {

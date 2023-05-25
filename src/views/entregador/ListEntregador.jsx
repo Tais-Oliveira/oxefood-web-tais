@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Divider, Icon, List, Modal, Segment, Table } from 'semantic-ui-react';
-import { ENDERECO_API } from '../util/constante';
+import { ENDERECO_API } from '../../views/util/constante';
 
 class ListEntregador extends React.Component{
 
@@ -79,6 +79,7 @@ class ListEntregador extends React.Component{
                         <Divider />
 
                         <div style={{marginTop: '4%'}}>
+
                         <Link to={'/form-entregador'}>
                             <Button
                                 inverted
@@ -103,6 +104,7 @@ class ListEntregador extends React.Component{
                                         <Table.HeaderCell>Data de Nascimento</Table.HeaderCell>
                                         <Table.HeaderCell>Fone Celular</Table.HeaderCell>
                                         <Table.HeaderCell>Fone Fixo</Table.HeaderCell>
+                                        <Table.HeaderCell>Ativo</Table.HeaderCell>
                                         <Table.HeaderCell textAlign='center' width={3}>Ações</Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>
@@ -117,6 +119,8 @@ class ListEntregador extends React.Component{
                                             <Table.Cell>{this.formatarData(entregador.dataNascimento)}</Table.Cell>
                                             <Table.Cell>{entregador.foneCelular}</Table.Cell>
                                             <Table.Cell>{entregador.foneFixo}</Table.Cell>
+                                            <Table.Cell>{entregador.ativo}</Table.Cell>
+                                           
                                             <Table.Cell textAlign='center'>
 
                                                 <Button

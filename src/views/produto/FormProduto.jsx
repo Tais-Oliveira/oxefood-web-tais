@@ -3,7 +3,7 @@ import React from "react";
 import InputMask from 'react-input-mask';
 import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
-import { ENDERECO_API } from "../util/constante";
+import { ENDERECO_API } from '../../views/util/constante';
 class FormProduto extends React.Component{
 
 	state = {

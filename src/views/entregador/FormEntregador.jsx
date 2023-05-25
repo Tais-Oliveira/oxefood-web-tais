@@ -3,7 +3,7 @@ import React from "react";
 import InputMask from 'react-input-mask';
 import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
-import { ENDERECO_API } from "../util/constante";
+import { ENDERECO_API } from '../../views/util/constante';
 
 
 const ufList = [
@@ -316,12 +316,6 @@ class FormEntregador extends React.Component{
                                      </Form.Group> 
 								
 							
-
-                             
-  
-                             
-							
-
 								<Form.Group widths='equal' style={{marginTop: '4%'}}  className='form--empresa-salvar'>
 
 								  <Link to={'/list-entregador'}>
