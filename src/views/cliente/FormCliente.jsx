@@ -97,6 +97,7 @@ export default function FormCliente () {
 								<Form.Input
 									required
 									fluid
+									placeholder="Maria de Lourdes"
 									label='Nome'
 									maxLength="100"
 									value={nome}
@@ -104,10 +105,12 @@ export default function FormCliente () {
 								/>
 
 								<Form.Input
+								    required
 									fluid
 									label='CPF'>
 									<InputMask 
 										mask="999.999.999-99"
+										placeholder="999.999.999-99"
 										value={cpf}
 										onChange={e => setCpf(e.target.value)}
 									/> 
@@ -118,28 +121,33 @@ export default function FormCliente () {
 							<Form.Group>
 
 								<Form.Input
+								    required
 									fluid
 									label='Fone Celular'
 									width={6}>
 									<InputMask 
 										mask="(99) 9999.9999" 
+										placeholder="(99) 9999.9999"
 										value={foneCelular}
 										onChange={e => setFoneCelular(e.target.value)}
 									/> 
 								</Form.Input>
 
 								<Form.Input
+								    required
 									fluid
 									label='Fone Fixo'
 									width={6}>
 									<InputMask 
 										mask="(99) 9999.9999"
+										placeholder="(99) 9999.9999"
 										value={foneFixo}
 										onChange={e => setFoneFixo(e.target.value)}
 									/> 
 								</Form.Input>
 
 								<Form.Input
+								    required
 									fluid
 									label='Data Nascimento'
 									width={6}
@@ -147,7 +155,7 @@ export default function FormCliente () {
 									<InputMask 
 										mask="99/99/9999" 
 										maskChar={null}
-										placeholder="Ex: 20/03/1985"
+										placeholder="Ex: 18/18/2003"
 										value={dataNascimento}
 										onChange={e => setDataNascimento(e.target.value)}
 									/> 
@@ -156,7 +164,6 @@ export default function FormCliente () {
 							</Form.Group>
 
 							<Form.Group widths='equal' style={{marginTop: '4%'}}  className='form--empresa-salvar'>
-
 							<Link to={'/list-cliente'}>
 								<Button
 									type="button"
@@ -168,8 +175,9 @@ export default function FormCliente () {
 								>
 									<Icon name='reply' />
 									Voltar
-								</Button></Link>
-
+								</Button>
+                                </Link>
+								
 								<Container textAlign='right'>
 									
 									<Button

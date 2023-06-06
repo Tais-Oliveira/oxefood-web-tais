@@ -1,14 +1,16 @@
 import axios from 'axios';
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Container, Divider, Icon, Table } from 'semantic-ui-react';
+import { Button, Container, Divider, Header, Icon, Modal, Table } from 'semantic-ui-react';
 import { ENDERECO_API } from '../../views/util/constante';
 
 class ListCliente extends React.Component{
 
     state = {
 
-       listaClientes: []
+        listaClientes: [],
+        openModal: false,
+        idRemover: null,
       
     }
 
@@ -44,6 +46,44 @@ class ListCliente extends React.Component{
         return dataFormatada
     };
 
+    confirmaRemover = (id) => {
+
+        this.setState({
+            openModal: true,
+            idRemover: id
+        })  
+    }
+
+    setOpenModal = (val) => {
+
+        this.setState({
+            openModal: val
+        })
+   
+    };
+
+    remover = async () => {
+
+        await axios.delete(ENDERECO_API + 'api/cliente/' + this.state.idRemover)
+        .then((response) => {
+   
+            this.setState({ openModal: false })
+            console.log('Cliente removido com sucesso.')
+   
+            axios.get(ENDERECO_API + "api/cliente")
+            .then((response) => {
+           
+                this.setState({
+                    listaClientes: response.data
+                })
+            })
+        })
+        .catch((error) => {
+            this.setState({  openModal: false })
+            console.log('Erro ao remover um cliente.')
+        })
+    };
+
     render(){
         return(
             <div>
@@ -68,8 +108,8 @@ class ListCliente extends React.Component{
                             >
                                 <Icon name='clipboard outline' />
                                 Novo
-                            </Button></Link>
-
+                            </Button>
+                            </Link>
                             <br/><br/><br/>
                       
                             <Table color='orange' sortable celled>
@@ -89,7 +129,7 @@ class ListCliente extends React.Component{
 
                                     { this.state.listaClientes.map(cliente => (
 
-                                        <Table.Row>
+                                        <Table.Row key={cliente.id}> 
                                             <Table.Cell>{cliente.nome}</Table.Cell>
                                             <Table.Cell>{cliente.cpf}</Table.Cell>
                                             <Table.Cell>{this.formatarData(cliente.dataNascimento)}</Table.Cell>
@@ -111,7 +151,8 @@ class ListCliente extends React.Component{
                                                    circular
                                                    icon='trash'
                                                    color='red'
-                                                   title='Clique aqui para remover este cliente' />
+                                                   title='Clique aqui para remover este cliente' 
+                                                   onClick={e => this.confirmaRemover(cliente.id)}/>
 
                                             </Table.Cell>
                                         </Table.Row>
@@ -122,6 +163,27 @@ class ListCliente extends React.Component{
                        </div>
                    </Container>
                </div>
+
+               <Modal
+                    basic
+                    onClose={() => this.setOpenModal(false)}
+                    onOpen={() => this.setOpenModal(true)}
+                    open={this.state.openModal}
+                >
+                    <Header icon>
+                        <Icon name='trash' />
+                        <div style={{marginTop: '5%'}}> Tem certeza que deseja remover esse registro? </div>
+                    </Header>
+                    <Modal.Actions>
+                        <Button basic color='red' inverted onClick={() => this.setOpenModal(false)}>
+                            <Icon name='remove' /> Não
+                        </Button>
+                        <Button color='green' inverted onClick={() => this.remover()}>
+                            <Icon name='checkmark' /> Sim
+                        </Button>
+                    </Modal.Actions>
+                </Modal>
+
            </div>
        )
    }

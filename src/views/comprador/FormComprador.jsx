@@ -13,7 +13,7 @@ class FormComprador extends React.Component{
 		enderecoComercial: null,
 		enderecoResidencial: null,
 		comissao: null,
-		trabahoHomeOffice: true,
+		trabahoHomeOffice: false,
         qtdComprasMediasMes: null,
         contratadoEm: null
 	}
@@ -61,6 +61,7 @@ class FormComprador extends React.Component{
 									<Form.Input
 										required
 										fluid
+										placeholder="Maria de Lourdes"
 										label='Nome'
 										maxLength="100"
                                         width={7}
@@ -69,22 +70,27 @@ class FormComprador extends React.Component{
 									/>
 
                                     <Form.Input
+									    required
 										fluid
 										label='Valor de Comissão'
+										placeholder="R$ 99.99"
                                         width={4}
 										value={this.state.comissao}
 										onChange={e => this.setState({comissao: e.target.value})}
 									/>
 
                                     <Form.Input
+									    required
 										fluid
 										label='QTD Compras em Média no Mês'
+										placeholder="12" 
                                         width={4}
 										value={this.state.qtdComprasMediasMes}
 										onChange={e => this.setState({qtdComprasMediasMes: e.target.value})}
 									/>
 
                                     <Form.Input
+									    required
                                         fluid
                                         label='Contratado Em'
                                         width={4}
@@ -92,7 +98,7 @@ class FormComprador extends React.Component{
                                         <InputMask 
                                             mask="99/99/9999" 
                                             maskChar={null}
-                                            placeholder="Ex: 20/03/1985"
+                                            placeholder="Ex: 18/08/2003"
 											value={this.state.contratadoEm}
 											onChange={e => this.setState({contratadoEm: e.target.value})}
                                         /> 
@@ -101,15 +107,19 @@ class FormComprador extends React.Component{
 								</Form.Group>
 
                                 <Form.Input
+								    required
                                     fluid
                                     label='Endereço Residencial'
+									placeholder="Vila-Rica"
                                     value={this.state.enderecoResidencial}
                                     onChange={e => this.setState({enderecoResidencial: e.target.value})}
                                 />
 
                                 <Form.Input
+								    required
                                     fluid
                                     label='Endereço Comercial'
+									placeholder="Vila-Rica"
                                     value={this.state.enderecoComercial}
                                     onChange={e => this.setState({enderecoComercial: e.target.value})}
                                 />
@@ -136,11 +146,8 @@ class FormComprador extends React.Component{
 
                                 </Form.Group>
 
-								
-							<Form.Group widths='equal' style={{marginTop: '4%'}}  className='form--empresa-salvar'>
-
-							<Link to={'/list-comprador'}>
-
+								<Form.Group widths='equal' style={{marginTop: '4%'}}  className='form--empresa-salvar'>
+								    <Link to={'/list-comprador'}>
 									<Button
 										type="button"
 										inverted
@@ -149,10 +156,10 @@ class FormComprador extends React.Component{
 										labelPosition='left'
 										color='orange'
 									>
-										<Icon name='reply'/>
+										<Icon name='reply' />
 										Voltar
-									</Button></Link>
-
+									</Button>
+                                    </Link>
 									<Container textAlign='right'>
 										
 										<Button
@@ -180,4 +187,5 @@ class FormComprador extends React.Component{
 		)
 	}
 }
+
 export default FormComprador;

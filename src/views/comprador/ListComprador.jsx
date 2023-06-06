@@ -57,7 +57,6 @@ class ListComprador extends React.Component{
                         <Divider />
 
                         <div style={{marginTop: '4%'}}>
-
                         <Link to={'/form-comprador'}>
                             <Button
                                 inverted
@@ -68,9 +67,9 @@ class ListComprador extends React.Component{
                                 floated='right'
                             >
                                 <Icon name='clipboard outline' />
-                               Novo
-                            </Button></Link>
-
+                                Novo
+                            </Button>
+                            </Link>
                             <br/><br/><br/>
                       
                             <Table color='orange' sortable celled>
@@ -112,14 +111,14 @@ class ListComprador extends React.Component{
                                                    circular
                                                    icon='edit'
                                                    color='blue'
-                                                   itle='Clique aqui para editar os dados deste comprador' /> &nbsp;
+                                                   itle='Clique aqui para editar os dados deste cliente' /> &nbsp;
                                                    
                                                 <Button
                                                    inverted
                                                    circular
                                                    icon='trash'
                                                    color='red'
-                                                   title='Clique aqui para remover este comprador' />
+                                                   title='Clique aqui para remover este cliente' />
 
                                             </Table.Cell>
                                         </Table.Row>

@@ -79,7 +79,6 @@ class ListEntregador extends React.Component{
                         <Divider />
 
                         <div style={{marginTop: '4%'}}>
-
                         <Link to={'/form-entregador'}>
                             <Button
                                 inverted
@@ -104,7 +103,6 @@ class ListEntregador extends React.Component{
                                         <Table.HeaderCell>Data de Nascimento</Table.HeaderCell>
                                         <Table.HeaderCell>Fone Celular</Table.HeaderCell>
                                         <Table.HeaderCell>Fone Fixo</Table.HeaderCell>
-                                        <Table.HeaderCell>Ativo</Table.HeaderCell>
                                         <Table.HeaderCell textAlign='center' width={3}>Ações</Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>
@@ -113,14 +111,12 @@ class ListEntregador extends React.Component{
 
                                     { this.state.listaEntregadores.map(entregador => (
 
-                                        <Table.Row>
+                                        <Table.Row key={entregador.id}>
                                             <Table.Cell>{entregador.nome}</Table.Cell>
                                             <Table.Cell>{entregador.cpf}</Table.Cell>
                                             <Table.Cell>{this.formatarData(entregador.dataNascimento)}</Table.Cell>
                                             <Table.Cell>{entregador.foneCelular}</Table.Cell>
                                             <Table.Cell>{entregador.foneFixo}</Table.Cell>
-                                            <Table.Cell>{entregador.ativo}</Table.Cell>
-                                           
                                             <Table.Cell textAlign='center'>
 
                                                 <Button
@@ -133,11 +129,15 @@ class ListEntregador extends React.Component{
                                                 />  &nbsp;
                                               
                                                 <Button
-                                                   inverted
-                                                   circular
-                                                   icon='edit'
-                                                   color='blue'
-                                                   itle='Clique aqui para editar os dados deste entregador' /> &nbsp;
+                                                    inverted
+                                                    circular
+                                                    color='green'
+                                                    title='Clique aqui para editar os dados deste cliente'
+                                                    icon>
+                                                        <Link to="/form-entregador" state={{id: entregador.id}} style={{color: 'green'}}> <Icon name='edit' /> </Link>
+                                                </Button>
+                                                
+                                                &nbsp;
                                                    
                                                 <Button
                                                    inverted
