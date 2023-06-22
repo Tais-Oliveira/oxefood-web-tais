@@ -2,12 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
-import { ENDERECO_API } from '../../views/util/constante';
+import { ENDERECO_API } from "../util/constante";
 
 export default function FormProduto () {
 
 	const { state } = useLocation();
-
+ 
 	const [idProduto, setIdProduto] = useState();
 	const [codigo, setCodigo] = useState();
 	const [titulo, setTitulo] = useState();
@@ -15,51 +15,60 @@ export default function FormProduto () {
 	const [valorUnitario, setValorUnitario] = useState();
 	const [tempoEntregaMinimo, setTempoEntregaMinimo] = useState();
 	const [tempoEntregaMaximo, setTempoEntregaMaximo] = useState();
+	const [listaCategoria, setListaCategoria] = useState([]);
+	const [idCategoria, setIdCategoria] = useState();
+ 
 
-	useEffect(() => {
+	
+useEffect(() => {
 
-		if (state != null && state.id != null) {
+       if (state != null && state.id != null) {
+           axios.get(ENDERECO_API + "api/produto/" + state.id)
+           .then((response) => {
+               setIdProduto(response.data.id)
+               setCodigo(response.data.codigo)
+               setTitulo(response.data.titulo)
+               setDescricao(response.data.descricao)
+               setValorUnitario(response.data.valorUnitario)
+               setTempoEntregaMinimo(response.data.tempoEntregaMinimo)
+               setTempoEntregaMaximo(response.data.tempoEntregaMaximo)
+               setIdCategoria(response.data.categoria.id)
+           })
+       }
 
-			axios.get(ENDERECO_API + "api/produto/" + state.id)
+       axios.get(ENDERECO_API + "api/categoriaproduto")
+       .then((response) => {
+           const dropDownCategorias = response.data.map(c => ({ text: c.descricao, value: c.id }));
+           setListaCategoria(dropDownCategorias);
+       })
 
-			.then((response) => {
-			
-				setIdProduto(response.data.id)
-				setCodigo(response.data.codigo)
-				setTitulo(response.data.titulo)
-				setDescricao(response.data.descricao)
-				setValorUnitario(response.data.valorUnitario)
-				setTempoEntregaMinimo(response.data.tempoEntregaMinimo)
-				setTempoEntregaMaximo(response.data.tempoEntregaMaximo)
-			})
-		}
-	}, [state])
+   }, [state])
 
-	function salvar() {
 
-		let produtoRequest = {
 
-			codigo: codigo,
-			titulo: titulo,
-			descricao: descricao,
-			valorUnitario: valorUnitario,
-			tempoEntregaMinimo: tempoEntregaMinimo,
-			tempoEntregaMaximo: tempoEntregaMaximo
-		}
+   function salvar() {
 
-		if (idProduto != null) { //Alteração:
-
-			axios.put(ENDERECO_API + "api/produto/" + idProduto, produtoRequest)
-			.then((response) => { console.log('Produto alterado com sucesso.') })
-			.catch((error) => { console.log('Erro ao alter um produto.') })
-
-		} else { //Cadastro:
-			
-			axios.post(ENDERECO_API + "api/produto", produtoRequest)
-			.then((response) => { console.log('Produto cadastrado com sucesso.') })
-			.catch((error) => { console.log('Erro ao incluir o produto.') })
-		}
+	let produtoRequest = {
+		idCategoria: idCategoria,
+		codigo: codigo,
+		titulo: titulo,
+		descricao: descricao,
+		valorUnitario: valorUnitario,
+		tempoEntregaMinimo: tempoEntregaMinimo,
+		tempoEntregaMaximo: tempoEntregaMaximo
 	}
+
+	if (idProduto != null) { //Alteração:
+		axios.put(ENDERECO_API + "api/produto/" + idProduto, produtoRequest)
+		.then((response) => { console.log('Produto alterado com sucesso.') })
+		.catch((error) => { console.log('Erro ao alterar um produto.') })
+	} else { //Cadastro:
+		axios.post(ENDERECO_API + "api/produto", produtoRequest)
+		.then((response) => { console.log('Produto cadastrado com sucesso.') })
+		.catch((error) => { console.log('Erro ao incluir o produto.') })
+	}
+}
+
 
 	return(
 		<div>
@@ -106,8 +115,20 @@ export default function FormProduto () {
 								/>
 							</Form.Group>
 
+							<Form.Select
+								required
+								fluid
+								tabIndex='3'
+								placeholder='Selecione'
+								label='Categoria'
+								options={listaCategoria}
+								value={idCategoria}
+								onChange={(e,{value}) => {
+									setIdCategoria(value)
+								}}
+							/>
+
 							<Form.TextArea
-							    required
 								label='Descrição'
 								placeholder='Informe a descrição do produto'
 								tabIndex='3'
@@ -124,14 +145,12 @@ export default function FormProduto () {
 									label='Valor Unitário'
 									tabIndex='5'
 									name='valorUnitario'
-									placeholder="R$ 99.99"
 									width={6}
 									value={valorUnitario}
 									onChange={e => setValorUnitario(e.target.value)}
 								/>
 								
 								<Form.Input
-								    required
 									fluid
 									placeholder='30'
 									label='Tempo de Entrega Mínimo em Minutos'
@@ -142,7 +161,6 @@ export default function FormProduto () {
 								/>
 								
 								<Form.Input
-								    required
 									fluid
 									placeholder='40'
 									label='Tempo de Entrega Máximo em Minutos'
@@ -153,8 +171,11 @@ export default function FormProduto () {
 								/>
 							</Form.Group>
 
+								
+
+
 							<Form.Group widths='equal' style={{marginTop: '4%', justifyContent:'space-between'}}>
-							    <Link to={'/list-produto'}>
+
 								<Button
 									type="button"
 									inverted
@@ -164,9 +185,9 @@ export default function FormProduto () {
 									color='orange'
 								>
 									<Icon name='reply' />
-									Voltar
+									<Link to={'/list-produto'}>Voltar</Link>
 								</Button>
-								</Link>
+
 								<Button
 									inverted
 									circular
@@ -179,6 +200,7 @@ export default function FormProduto () {
 									<Icon name='save' />
 									Salvar
 								</Button>
+								
 
 							</Form.Group>
 

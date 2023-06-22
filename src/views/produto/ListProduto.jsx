@@ -59,32 +59,30 @@ class ListProduto extends React.Component{
                             <br/><br/><br/>
                       
                             <Table color='orange' sortable celled>
+                            <Table.Header>
+                            <Table.Row>
+                            <Table.HeaderCell>Código</Table.HeaderCell>
+                            <Table.HeaderCell>Categoria</Table.HeaderCell>
+                            <Table.HeaderCell>Título</Table.HeaderCell>
+                            <Table.HeaderCell>Descrição</Table.HeaderCell>
+                            <Table.HeaderCell>Valor Unitário</Table.HeaderCell>
+                            <Table.HeaderCell>Tempo Mínimo de Entrega</Table.HeaderCell>
+                            <Table.HeaderCell>Tempo Máximo de Entrega</Table.HeaderCell>
+                            <Table.HeaderCell textAlign='center' width={2}>Ações</Table.HeaderCell>
+                            </Table.Row>
+                            </Table.Header>     
+                            <Table.Body>
+                            { this.state.listaProdutos.map(p => (
+                            <Table.Row key={p.id}>
+                            <Table.Cell>{p.codigo}</Table.Cell>
+                            <Table.Cell>{p.categoria.descricao}</Table.Cell>
+                            <Table.Cell>{p.titulo}</Table.Cell>
+                            <Table.Cell>{p.descricao}</Table.Cell>
+                            <Table.Cell>{p.valorUnitario}</Table.Cell>
+                            <Table.Cell>{p.tempoEntregaMinimo}</Table.Cell>
+                            <Table.Cell>{p.tempoEntregaMaximo}</Table.Cell>
+                            <Table.Cell textAlign='center'>
 
-                                <Table.Header>
-                                    <Table.Row>
-                                        <Table.HeaderCell>Código</Table.HeaderCell>
-                                        <Table.HeaderCell>Título</Table.HeaderCell>
-                                        <Table.HeaderCell>Descrição</Table.HeaderCell>
-                                        <Table.HeaderCell>Valor Unitário</Table.HeaderCell>
-                                        <Table.HeaderCell>Tempo de Mínimo de Entrega</Table.HeaderCell>
-                                        <Table.HeaderCell>Tempo de Máximo de Entrega</Table.HeaderCell>
-                                        <Table.HeaderCell textAlign='center' width={2}>Ações</Table.HeaderCell>
-                                    </Table.Row>
-                                </Table.Header>
-                          
-                                <Table.Body>
-
-                                    { this.state.listaProdutos.map(p => (
-
-                                        <Table.Row key={p.id}>
-                                            <Table.Cell>{p.codigo}</Table.Cell>
-                                            <Table.Cell>{p.titulo}</Table.Cell>
-                                            <Table.Cell>{p.descricao}</Table.Cell>
-                                            <Table.Cell>{p.valorUnitario}</Table.Cell>
-                                            <Table.Cell>{p.tempoEntregaMinimo}</Table.Cell>
-                                            <Table.Cell>{p.tempoEntregaMaximo}</Table.Cell>
-                                            <Table.Cell textAlign='center'>
-                                              
                                                 <Button
                                                     inverted
                                                     circular
